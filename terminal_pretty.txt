@@ -1,0 +1,20 @@
+# GIT
+function git_branch() {
+  git rev-parse 2> /dev/null 1>&2 && echo "(`git rev-parse --abbrev-ref HEAD 2> /dev/null`)"
+}
+
+function prompt(){
+  PS1="\[\033[01;91m\]\u \[\033[01;95m\]\h\[\033[01;92m\] \W $(git_branch) $ \[\033[00m\]"
+}
+export PROMPT_COMMAND=prompt
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+export ES_HOME=/usr/local/var/homebrew/linked/elasticsearch-full
+
+alias g_short='grep -nr --include *.yml "xyz"'
+alias c='clear'
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export SYSTEM_VERSION_COMPAT=1
